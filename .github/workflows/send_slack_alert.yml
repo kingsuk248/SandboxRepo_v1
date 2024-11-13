@@ -13,9 +13,11 @@ jobs:
       with:
         payload: |
           {
-            "author": "Test Author",
-            "title": "Test Title",
-            "repository": "Test Repo"
+            "author": "Test_Author",
+            "repository": "Test_Repo",
+            "title": "Test_Title",
+            "description": "Test_Description",
+            "url": "https://www.github.com",
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

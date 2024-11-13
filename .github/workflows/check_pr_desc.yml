@@ -4,7 +4,7 @@ on:
     types: [opened, edited, reopened]
     branches: [main]
 jobs:
-  check-pr-description:
+  Check-PR-Description:
     runs-on: ubuntu-latest
     steps:
     - name : Check if PR Description is Empty

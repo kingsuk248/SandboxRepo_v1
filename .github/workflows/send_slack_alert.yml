@@ -15,8 +15,8 @@ jobs:
           {
             "author": "${{ github.actor }}",
             "repository": "${{ github.repository }}",
-            "title": "${{ job.status }}",
-            "description": "${{ job.status }}",
+            "title": "${{ github.event.pull_request.title == '' }}",
+            "description": "${{ github.event.pull_request.body == '' }}",
             "url": "${{ job.status }}"
           }
       env:

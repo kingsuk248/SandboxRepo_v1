@@ -14,7 +14,7 @@ jobs:
         payload: |
           {
             "author": "${{ github.actor }}",
-            "repository": "${{ github.repository }}",
+            "repository": "${{ github.repositoryUrl }}",
             "title": "PR Title",
             "description": "PR Description",
             "url": "https://www.github.com"

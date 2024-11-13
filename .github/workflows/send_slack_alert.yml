@@ -17,7 +17,7 @@ jobs:
             "repository": "Test_Repo",
             "title": "Test_Title",
             "description": "Test_Description",
-            "url": "https://www.github.com",
+            "url": "https://www.github.com"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

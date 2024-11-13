@@ -1,0 +1,21 @@
+name: Send Slack Message
+on:
+  pull_request:
+    types: [opened, edited, reopened]
+    branches: [main]
+jobs:
+  Send-Slack-Approval-Request:
+    runs-on: ubuntu-latest
+    steps:
+    - name : Send Slack Approval Request
+      id: slack
+      uses: slackapi/slack-github-action@v1.27.0
+      with:
+        payload: |
+          {
+            "author": ${{ github.actor }},
+            "title": ${{ github.event.pull_request.title }},
+            "repository": ${{ github.repository }}
+          }
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

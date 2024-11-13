@@ -7,7 +7,7 @@ jobs:
   Check-PR-Description:
     runs-on: ubuntu-latest
     env:
-      pr_template_message: "PR Description template:\nSummary of the PR changes\nJIRA link\n[optional]Checklist"
+      pr_template_message: "PR Description template:\nSummary of the PR changes\nJIRA link\nChecklist[optional]"
     steps:
     - name : Check if PR Description is Empty
       if: ${{ github.event.pull_request.body == '' }}
@@ -35,7 +35,7 @@ jobs:
         # Check if any line contains a URL starting with "https://"
         url_found=false
         while IFS= read -r line; do
-          if echo "$line" | grep -q '^https://'; then
+          if echo "$line" | grep -q '^https://jira.nike'; then
             url_found=true
             break
           fi

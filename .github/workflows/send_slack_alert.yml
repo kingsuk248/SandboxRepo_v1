@@ -15,9 +15,9 @@ jobs:
           {
             "author": "${{ github.actor }}",
             "repository": "${{ github.repository }}",
-            "title": "${{ github.event.pull_request.title == '' }}",
-            "description": "${{ github.event.pull_request.body == '' }}",
-            "url": "${{ job.status }}"
+            "title": "${{ github.event.pull_request.title }}",
+            "description": "${{ github.event.pull_request.body }}",
+            "url": "${{ steps.pr-url.outputs.url }}"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

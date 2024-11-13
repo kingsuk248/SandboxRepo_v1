@@ -6,6 +6,8 @@ on:
 jobs:
   Check-PR-Description:
     runs-on: ubuntu-latest
+    env:
+      pr_template_message: "PR Description template:\nSummary of the PR changes\nJIRA link\n[optional]Checklist"
     steps:
     - name : Check if PR Description is Empty
       if: ${{ github.event.pull_request.body == '' }}
@@ -18,8 +20,6 @@ jobs:
     - name: Check if PR description matches the required format
       id: check_description
       run: |
-        pr_template_message="PR Description template:\nSummary of the PR changes\nJIRA link\n[optional]Checklist"
-
         # Extract PR description
         description="${{ github.event.pull_request.body }}"
 
@@ -29,7 +29,7 @@ jobs:
         # Check if we have at least one non-empty line
         lines_count=$(echo "$formatted_description" | wc -l)
         if [ "$lines_count" -lt 1 ]; then
-          echo $pr_template_message
+          echo "$pr_template_message"
           exit 1
         fi
         echo "SUCCESS: PR Description non-empty line validation!"
@@ -44,7 +44,7 @@ jobs:
         done <<< "$formatted_description"
         
         if [ "$url_found" = false ]; then
-          echo $pr_template_message
+          echo "$pr_template_message"
           exit 1
         fi
         echo "SUCCESS: PR Description URL validation!"

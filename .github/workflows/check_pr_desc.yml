@@ -20,7 +20,6 @@ jobs:
     - name: Check if PR description matches the required format
       id: check_description
       run: |
-        # Extract PR description
         description="${{ github.event.pull_request.body }}"
 
         # Remove leading/trailing whitespace and collapse multiple blank lines
@@ -32,7 +31,6 @@ jobs:
           echo "$pr_template_message"
           exit 1
         fi
-        echo "SUCCESS: PR Description non-empty line validation!"
 
         # Check if any line contains a URL starting with "https://"
         url_found=false

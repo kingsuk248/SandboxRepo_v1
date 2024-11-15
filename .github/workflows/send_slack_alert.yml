@@ -7,7 +7,7 @@ jobs:
   Send-Slack-Approval-Request:
     runs-on: ubuntu-latest
     env:
-      pr_title: ${{ github.event.pull_request.title }}
+      pr_title: "${{ github.event.pull_request.title }}"
     steps:
     - name : Send Slack Approval Request
       id: slack

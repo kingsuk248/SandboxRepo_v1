@@ -17,7 +17,7 @@ jobs:
           {
             "author": "${{ github.actor }}",
             "repository": "${{ github.repositoryUrl }}",
-            "title": "$pr_title",
+            "title": "${{ github.event.pull_request.title }}",
             "description": "PR Description",
             "url": "https://www.github.com"
           }

@@ -3,6 +3,7 @@ on:
   workflow_run:
     workflows: [Check PR Description]
     types: [completed]
+    branches: [main]
 jobs:
   Send-Slack-Approval-Request:
     runs-on: ubuntu-latest

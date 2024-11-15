@@ -18,8 +18,7 @@ jobs:
             "author": "${{ github.actor }}",
             "repository": "${{ github.repositoryUrl }}",
             "title": "${{ github.event.pull_request.title }}",
-            "description": "${{ github.event.pull_request.body }}",
-            "url": "https://www.github.com"
+            "url": "${{ github.event.pull_request.html_url }}"
           }
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}

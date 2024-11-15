@@ -18,7 +18,7 @@ jobs:
             "author": "${{ github.actor }}",
             "repository": "${{ github.repositoryUrl }}",
             "title": "${{ github.event.pull_request.title }}",
-            "description": "${{ github.event.pull_request.body }}",
+            "description": JSON.stringify("${{ github.event.pull_request.body }}"),
             "url": "https://www.github.com"
           }
       env:

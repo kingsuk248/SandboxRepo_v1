@@ -1,19 +1,18 @@
 name: Send Slack Alert
 on:
-  pull_request:
-    types: [opened, edited, reopened]
-    branches: [main]
+  workflow_run:
+    workflows: [Check PR Title, Check PR Description]
+    types:
+      - completed
 jobs:
   Send-Slack-Approval-Request:
     runs-on: ubuntu-latest
-    env:
-      pr_title: "${{ github.event.pull_request.title }}"
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name : Send Slack Approval Request
       id: slack
       uses: slackapi/slack-github-action@v1.27.0
       with:
-        method: chat.postMessage
         payload: |
           {
             "author": "${{ github.actor }}",

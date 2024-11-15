@@ -13,6 +13,7 @@ jobs:
       id: slack
       uses: slackapi/slack-github-action@v2.0.0
       with:
+        method: chat.postMessage
         payload: |
           {
             "author": "${{ github.actor }}",

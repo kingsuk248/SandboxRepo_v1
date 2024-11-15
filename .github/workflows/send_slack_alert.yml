@@ -1,13 +1,11 @@
 name: Send Slack Alert
 on:
-  workflow_run:
-    workflows: [Check PR Description]
-    types: [completed]
+  pull_request:
+    types: [opened, edited, reopened]
     branches: [main]
 jobs:
   Send-Slack-Approval-Request:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     steps:
     - name : Send Slack Approval Request
       id: slack

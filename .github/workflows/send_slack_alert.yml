@@ -1,9 +1,8 @@
 name: Send Slack Alert
 on:
   workflow_run:
-    workflows: [Check PR Title, Check PR Description]
-    types:
-      - completed
+    workflows: [Check PR Description]
+    types: [completed]
 jobs:
   Send-Slack-Approval-Request:
     runs-on: ubuntu-latest
